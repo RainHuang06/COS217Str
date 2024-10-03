@@ -46,12 +46,12 @@ int Str_compare(const char s1[], const char s2[]) {
 char* Str_search(const char toSearch[], const char find[]) {
     int searchLength = Str_getLength(toSearch);
     int findLength = Str_getLength(find);
+    int i, j;
     assert(toSearch != NULL);
     assert(find != NULL);
     if(findLength == 0) {
-        return toSearch;
+        return (char*)toSearch;
     }
-    int i, j;
     for(i = 0; i <= searchLength - findLength; i++) {
         int hasFound = 1;
         for(j = 0; j < findLength; j++) {
