@@ -29,6 +29,7 @@ char* Str_copy(char copy[], const char original[]) {
         copy[i] = original[i];
         i++;
     }
+    copy[i] = '\0'; /*Ending string*/
     return (char*)copy;
 }
 /*
