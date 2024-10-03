@@ -48,13 +48,7 @@ int Str_compare(const char s1[], const char s2[]) {
             return (int)(s1[i] - s2[i]); /*Comparison of unequal character value of correct sign*/
         }
     }
-    if(s1[i] == '\0' && s2[i] == '\0') { /*Handles end-of-string cases*/
-        return 0; /*Are the strings of equal length?*/
-    } else if(s1[i] == '\0') {
-        return -1; /*Shorter string comes first*/
-    } else {
-        return 1;
-    }
+    return (int)(s1[i] - s2[i]); /*Comparison of unequal character value of correct sign*/
     
 }
 
