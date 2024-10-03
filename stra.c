@@ -36,9 +36,9 @@ int Str_compare(const char s1[], const char s2[]) {
     int i;
     for(i = 0; i <= lesserLength; i++) {
         if(s1[i] < s2[i]) {
-            return 1;
-        } else if(s1[i] > s2[i]) {
             return -1;
+        } else if(s1[i] > s2[i]) {
+            return 1;
         }
     }
     return 0;
@@ -97,4 +97,5 @@ char* Str_search(const char toSearch[], const char find[]) {
     printf("%c", *Str_search(original, "abc"));
     printf("%c", *Str_search(original, ""));
     printf("%c", *strstr(original, ""));
-}*/
+}
+*/
