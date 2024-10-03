@@ -32,7 +32,8 @@ int Str_compare(const char s1[], const char s2[]) {
     int s1Length = Str_getLength(s1);
     int s2Length = Str_getLength(s2);
     int lesserLength = s1Length < s2Length ? s1Length : s2Length;
-    for(int i = 0; i <= lesserLength; i++) {
+    int i;
+    for(i = 0; i <= lesserLength; i++) {
         if(s1[i] < s2[i]) {
             return 1;
         } else if(s1[i] > s2[i]) {
