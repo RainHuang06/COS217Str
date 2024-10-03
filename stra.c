@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <assert.h>
+#include "str.h"
 size_t Str_getLength(const char s[]) {
     size_t length = 0;
     assert(s != NULL);
@@ -9,7 +10,7 @@ size_t Str_getLength(const char s[]) {
     return length;
 }
 char* Str_copy(char copy[], const char original[]) {
-    int length = Str_getLength(original);
+    int length = (int)Str_getLength(original);
     int i;
     assert(original != NULL);
     for(i = 0; i <= length; i++) {
@@ -18,8 +19,8 @@ char* Str_copy(char copy[], const char original[]) {
     return (char*)copy;
 }
 char* Str_concat(char copy[], const char original[]) {
-    int copyStart = Str_getLength(copy);
-    int length = Str_getLength(original);
+    int copyStart = (int)Str_getLength(copy);
+    int length = (int)Str_getLength(original);
     int i;
     assert(original != NULL);
     for(i = copyStart; i <= copyStart + length; i++) {
@@ -28,8 +29,8 @@ char* Str_concat(char copy[], const char original[]) {
     return (char*)copy;
 }
 int Str_compare(const char s1[], const char s2[]) {
-    int s1Length = Str_getLength(s1);
-    int s2Length = Str_getLength(s2);
+    int s1Length = (int)Str_getLength(s1);
+    int s2Length = (int)Str_getLength(s2);
     int lesserLength = s1Length < s2Length ? s1Length : s2Length;
     int i;
     assert(s1 != NULL);
@@ -44,8 +45,8 @@ int Str_compare(const char s1[], const char s2[]) {
     return 0;
 }
 char* Str_search(const char toSearch[], const char find[]) {
-    int searchLength = Str_getLength(toSearch);
-    int findLength = Str_getLength(find);
+    int searchLength = (int)Str_getLength(toSearch);
+    int findLength = (int)Str_getLength(find);
     int i, j;
     assert(toSearch != NULL);
     assert(find != NULL);
