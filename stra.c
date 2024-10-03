@@ -8,32 +8,32 @@ size_t Str_getLength(const char s[]) {
     }
     return length;
 }
-char* Str_copy(char copy[], char original[]) {
-    assert(original != NULL);
+char* Str_copy(char copy[], const char original[]) {
     int length = Str_getLength(original);
     int i;
+    assert(original != NULL);
     for(i = 0; i <= length; i++) {
         copy[i] = original[i];
     }
-    return copy;
+    return (char*)copy;
 }
-char* Str_concat(char copy[], char original[]) {
-    assert(original != NULL);
+char* Str_concat(char copy[], const char original[]) {
     int copyStart = Str_getLength(copy);
     int length = Str_getLength(original);
     int i;
+    assert(original != NULL);
     for(i = copyStart; i <= copyStart + length; i++) {
         copy[i] = original[i - copyStart];
     }
-    return copy;
+    return (char*)copy;
 }
 int Str_compare(const char s1[], const char s2[]) {
-    assert(s1 != NULL);
-    assert(s2 != NULL);
     int s1Length = Str_getLength(s1);
     int s2Length = Str_getLength(s2);
     int lesserLength = s1Length < s2Length ? s1Length : s2Length;
     int i;
+    assert(s1 != NULL);
+    assert(s2 != NULL);
     for(i = 0; i <= lesserLength; i++) {
         if(s1[i] < s2[i]) {
             return -1;
@@ -44,10 +44,10 @@ int Str_compare(const char s1[], const char s2[]) {
     return 0;
 }
 char* Str_search(const char toSearch[], const char find[]) {
-    assert(toSearch != NULL);
-    assert(find != NULL);
     int searchLength = Str_getLength(toSearch);
     int findLength = Str_getLength(find);
+    assert(toSearch != NULL);
+    assert(find != NULL);
     if(findLength == 0) {
         return toSearch;
     }
@@ -60,7 +60,7 @@ char* Str_search(const char toSearch[], const char find[]) {
             }
         }
         if(hasFound) {
-            return &toSearch[i];
+            return (char*)&toSearch[i];
         }
     }
     return NULL;
