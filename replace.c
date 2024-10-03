@@ -25,6 +25,7 @@ static size_t replaceAndWrite(const char *pcLine,
    char* curReplacement = pcLine;
    size_t pcToSize = Str_getLength(pcTo);
    size_t pcLineSize = Str_getLength(pcLine);
+   int i;
    if(*pcFrom == '\0') {
       printf(pcLine);
       return 0;
@@ -35,7 +36,7 @@ static size_t replaceAndWrite(const char *pcLine,
       return 0;
    }
    while(searchIndex != NULL) {
-      for(int i = 0; i < searchIndex - curReplacement; i++) {
+      for(i = 0; i < searchIndex - curReplacement; i++) {
          printf("%c", curReplacement[i]);
       }
       printf(pcTo);
