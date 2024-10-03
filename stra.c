@@ -27,10 +27,12 @@ char* Str_copy(char copy[], const char original[]) {
 }
 
 char* Str_concat(char copy[], const char original[]) {
-    int copyStart = (int)Str_getLength(copy);
-    int i = copyStart;
+    int copyStart;
+    int i;
     assert(original != NULL);
     assert(copy != NULL);
+    copyStart = (int)Str_getLength(copy);
+    i = copyStart;
     while(original[i - copyStart] != '\0') { /*Copies until end of string*/
         copy[i] = original[i - copyStart];
         i++;
@@ -53,11 +55,13 @@ int Str_compare(const char s1[], const char s2[]) {
 }
 
 char* Str_search(const char toSearch[], const char find[]) {
-    int searchLength = (int)Str_getLength(toSearch);
-    int findLength = (int)Str_getLength(find);
+    int searchLength;
+    int findLength;
     int i, j; 
     assert(toSearch != NULL);
     assert(find != NULL);
+    searchLength = (int)Str_getLength(toSearch);
+    findLength = (int)Str_getLength(find);
     if(findLength == 0) {
         return (char*)toSearch;
     }
