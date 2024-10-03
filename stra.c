@@ -13,7 +13,8 @@ size_t Str_getLength(const char s[]) {
 char* Str_copy(char copy[], char original[]) {
     assert(original != NULL);
     int length = Str_getLength(original);
-    for(int i = 0; i <= length; i++) {
+    int i;
+    for(i = 0; i <= length; i++) {
         copy[i] = original[i];
     }
     return copy;
@@ -22,7 +23,8 @@ char* Str_concat(char copy[], char original[]) {
     assert(original != NULL);
     int copyStart = Str_getLength(copy);
     int length = Str_getLength(original);
-    for(int i = copyStart; i <= copyStart + length; i++) {
+    int i;
+    for(i = copyStart; i <= copyStart + length; i++) {
         copy[i] = original[i - copyStart];
     }
     return copy;
@@ -50,9 +52,10 @@ char* Str_search(const char toSearch[], const char find[]) {
     if(findLength == 0) {
         return toSearch;
     }
-    for(int i = 0; i <= searchLength - findLength; i++) {
+    int i, j;
+    for(i = 0; i <= searchLength - findLength; i++) {
         int hasFound = 1;
-        for(int j = 0; j < findLength; j++) {
+        for(j = 0; j < findLength; j++) {
             if(toSearch[i + j] != find[j]) {
                 hasFound = 0;
             }
