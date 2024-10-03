@@ -1,6 +1,9 @@
+#ifndef STRING_H
+#define STRING_H
 #include <stddef.h>
-size_t Str_getLength;
-char* Str_copy;
-char* Str_concat;
-char* Str_compare;
-char* Str_search;
+size_t Str_getLength(const char s[]);
+char* Str_copy(char copy[], char original[]);
+char* Str_concat(char copy[], char original[]);
+char* Str_compare(const char s1[], const char s2[]);
+char* Str_search(const char toSearch[], const char find[]);
+#endif
