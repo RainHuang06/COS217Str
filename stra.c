@@ -17,6 +17,7 @@ size_t Str_getLength(const char s[]) {
     } 
     return length;
 }
+
 /*
 Takes two arguments, char copy[] and const char original[]. Copies values of original to copy and then returns
 the characters copied.
@@ -32,6 +33,7 @@ char* Str_copy(char copy[], const char original[]) {
     copy[i] = '\0'; /*Ending string*/
     return (char*)copy;
 }
+
 /*
 Takes two arguments, char copy[] and const char original[]. Concatenates values of original to the end of copy[],
 then returns the resulting string.
@@ -48,6 +50,7 @@ char* Str_concat(char copy[], const char original[]) {
     copy[i] = '\0';
     return (char*)copy;
 }
+
 /*
 Takes two arguments, const char s1[] and const char s2[]. Compares the lexicographical value
 ie alphabetical order, then returns -1 if s1 is smaller than s2.
@@ -70,6 +73,7 @@ int Str_compare(const char s1[], const char s2[]) {
     }
     
 }
+
 /*
 Takes two arguments, const char toSearch[] and const char find[].
 If searching for an empty string, returns toSearch.
@@ -78,21 +82,21 @@ If nothing was found, returns a null pointer.
 char* Str_search(const char toSearch[], const char find[]) {
     int searchLength = (int)Str_getLength(toSearch);
     int findLength = (int)Str_getLength(find);
-    int i, j;
+    int i, j; 
     assert(toSearch != NULL);
     assert(find != NULL);
     if(findLength == 0) {
         return (char*)toSearch;
     }
     for(i = 0; i <= searchLength - findLength; i++) {
-        int hasFound = 1;
+        int hasFound = 1; /*Flag defining if match found*/
         for(j = 0; j < findLength; j++) {
             if(toSearch[i + j] != find[j]) {
-                hasFound = 0;
+                hasFound = 0; /*Discrepancy means we must set a flag*/
             }
         }
         if(hasFound) {
-            return (char*)&toSearch[i];
+            return (char*)&toSearch[i]; /*Runs when no discrepancy is discovered*/
         }
     }
     return NULL;
