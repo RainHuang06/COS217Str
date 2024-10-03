@@ -22,7 +22,7 @@ Takes two arguments, char copy[] and const char original[]. Copies values of ori
 the characters copied.
 */
 char* Str_copy(char copy[], const char original[]) {
-    int i;
+    int i = 0;
     assert(original != NULL);
     assert(copy != NULL);
     while(original[i] != '\0') {
