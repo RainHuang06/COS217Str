@@ -1,3 +1,4 @@
+#include <stddef.h>
 size_t Str_getLength(const char s[]) {
     size_t length = 0;
     assert(s != NULL);
