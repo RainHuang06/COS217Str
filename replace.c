@@ -24,6 +24,7 @@ static size_t replaceAndWrite(const char *pcLine,
    int replacements = 0;
    char* curReplacement = pcLine;
    size_t pcToSize = Str_getLength(pcTo);
+   size_t pcFromSize = Str_getLength(pcFrom);
    size_t pcLineSize = Str_getLength(pcLine);
    int i;
    if(*pcFrom == '\0') {
@@ -31,22 +32,37 @@ static size_t replaceAndWrite(const char *pcLine,
       return 0;
    }
    char* searchIndex = Str_search(pcLine, pcFrom);
+   //printf(searchIndex);
    if(searchIndex == NULL) {
       printf(pcLine);
       return 0;
    }
    while(searchIndex != NULL) {
-      for(i = 0; i < searchIndex - curReplacement; i++) {
+      //printf("\n");
+      //printf(searchIndex);
+      //printf(curReplacement);
+      //printf("%d", pcToSize);
+      //printf("\n");
+      /*for(i = 0; i < searchIndex - curReplacement; i++) {
          printf("%c", curReplacement[i]);
+         //printf("here");
+      }*/
+      while(curReplacement < searchIndex) {
+         printf("%c", *curReplacement);
+         curReplacement++;
       }
+      //printf("%d", pcFromSize);
       printf(pcTo);
       replacements++;
-      curReplacement = searchIndex + pcToSize;
-      if(curReplacement >= pcLine + pcLineSize) {
-         return replacements;
-      }
+      curReplacement += pcFromSize;
+      //printf("\n replacement = %s \n", curReplacement);
+      //if(curReplacement >= pcLine + pcLineSize) {
+      //   return replacements;
+      //}
       searchIndex = Str_search(curReplacement, pcFrom);
    }
+   printf("%s", curReplacement);
+   return (size_t) replacements;
 }
 
 /*--------------------------------------------------------------------*/
@@ -84,8 +100,15 @@ int main(int argc, char *argv[])
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL) {
       uReplaceCount += replaceAndWrite(acLine, pcFrom, pcTo);
    }
-      /* Insert your code here. */
+      
 
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
 }
+
+/*int main(void) {
+   printf("\n");
+   printf("%d", replaceAndWrite("abcde", "abc", "bc"));
+   printf("\n");
+   printf("%d", replaceAndWrite("abcddddde", "dd", "qz"));
+}*/
