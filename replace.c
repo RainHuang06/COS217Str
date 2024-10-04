@@ -32,7 +32,6 @@ static size_t replaceAndWrite(const char *pcLine,
       return 0;
    }
    char* searchIndex = Str_search(pcLine, pcFrom);
-   //printf(searchIndex);
    if(searchIndex == NULL) {
       printf(pcLine);
       return 0;
