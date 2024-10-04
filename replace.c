@@ -21,9 +21,14 @@ static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
    int replacements = 0;
-   char* curReplacement = (char*)pcLine;
-   size_t pcFromSize = Str_getLength(pcFrom);
+   char* curReplacement;
+   size_t pcFromSize;
    char* searchIndex;
+   assert(pcLine != NULL);
+   assert(pcFrom != NULL);
+   assert(pcTo != NULL);
+   curReplacement = (char*)pcLine;
+   pcFromSize = Str_getLength(pcFrom);
    if(*pcFrom == '\0') {
       printf(pcLine); /*Handles case where pcFrom is empty*/
       return 0;
