@@ -38,7 +38,7 @@ static size_t replaceAndWrite(const char *pcLine,
       return 0;
    }
    while(searchIndex != NULL) {
-      //printf("\n");
+      /*//printf("\n");
       //printf(searchIndex);
       //printf(curReplacement);
       //printf("%d", pcToSize);
@@ -51,14 +51,14 @@ static size_t replaceAndWrite(const char *pcLine,
          printf("%c", *curReplacement);
          curReplacement++;
       }
-      //printf("%d", pcFromSize);
+      /*//printf("%d", pcFromSize);*/
       printf(pcTo);
       replacements++;
       curReplacement += pcFromSize;
-      //printf("\n replacement = %s \n", curReplacement);
+      /*//printf("\n replacement = %s \n", curReplacement);
       //if(curReplacement >= pcLine + pcLineSize) {
       //   return replacements;
-      //}
+      //}*/
       searchIndex = Str_search(curReplacement, pcFrom);
    }
    printf("%s", curReplacement);
