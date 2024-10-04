@@ -20,45 +20,30 @@
 static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
-   /* Insert your code here. */
    int replacements = 0;
-   char* curReplacement = pcLine;
-   size_t pcToSize = Str_getLength(pcTo);
+   char* curReplacement = (char*)pcLine;
    size_t pcFromSize = Str_getLength(pcFrom);
-   size_t pcLineSize = Str_getLength(pcLine);
-   int i;
+   char* searchIndex;
    if(*pcFrom == '\0') {
-      printf(pcLine);
+      printf(pcLine); /*Handles case where pcFrom is empty*/
       return 0;
    }
-   char* searchIndex = Str_search(pcLine, pcFrom);
+   searchIndex = Str_search(pcLine, pcFrom);
    if(searchIndex == NULL) {
-      printf(pcLine);
+      printf(pcLine); /*handles case if no matches initially*/
       return 0;
    }
    while(searchIndex != NULL) {
-      /*//printf("\n");
-      //printf(searchIndex);
-      //printf(curReplacement);
-      //printf("%d", pcToSize);
-      //printf("\n");
-      /*for(i = 0; i < searchIndex - curReplacement; i++) {
-         printf("%c", curReplacement[i]);
-         //printf("here");
-      }*/
-      while(curReplacement < searchIndex) {
+      while(curReplacement < searchIndex) { /*Print characters until
+      we see match*/
          printf("%c", *curReplacement);
          curReplacement++;
       }
-      /*//printf("%d", pcFromSize);*/
-      printf(pcTo);
-      replacements++;
-      curReplacement += pcFromSize;
-      /*//printf("\n replacement = %s \n", curReplacement);
-      //if(curReplacement >= pcLine + pcLineSize) {
-      //   return replacements;
-      //}*/
-      searchIndex = Str_search(curReplacement, pcFrom);
+      printf(pcTo); /*Print replacement*/
+      replacements++; /*Increment counter*/
+      curReplacement += pcFromSize; /*Skip replaced substring*/
+      searchIndex = Str_search(curReplacement, pcFrom); /*
+      Goes to next substring to replace*/
    }
    printf("%s", curReplacement);
    return (size_t) replacements;
@@ -97,17 +82,11 @@ int main(int argc, char *argv[])
    pcTo = argv[2];
 
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL) {
-      uReplaceCount += replaceAndWrite(acLine, pcFrom, pcTo);
+      uReplaceCount += replaceAndWrite(acLine, pcFrom, pcTo); /*
+      Loop over all lines of input*/
    }
       
 
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
 }
-
-/*int main(void) {
-   printf("\n");
-   printf("%d", replaceAndWrite("abcde", "abc", "bc"));
-   printf("\n");
-   printf("%d", replaceAndWrite("abcddddde", "dd", "qz"));
-}*/
